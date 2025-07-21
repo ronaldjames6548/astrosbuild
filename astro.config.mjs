@@ -56,13 +56,10 @@ export default defineConfig({
       },
     ],
   },
-    workbox({
-      workbox: {
-        globDirectory: '.vercel/output/static',
-        globPatterns: ['assets/*.js'],
-        globIgnores: ['**/node_modules/**/*', 'sw.js', 'workbox-*.js'],
+    workbox: {
+        navigateFallback: "/404",
+        globPatterns: ["*.js"]
       },
-    }),
   devOptions: {
     enabled: false,
     navigateFallbackAllowlist: [/^\/404$/],
