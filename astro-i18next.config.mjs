@@ -1,31 +1,54 @@
+
+// astro-i18next.config.mjs
+
 /** @type {import('astro-i18next').AstroI18nextConfig} */
 export default {
-  defaultLocale: "en",
-  locales: ["it"],
+  // Default language (used as fallback)
+  defaultLocale: 'en',
 
-  // Generate pages for default locale without language suffix in URL
-  generateDefaultLanguagePage: true,
-  defaultLangHasNoSuffix: true,
+  // All supported locales (must match your /src/pages/[locale]/ folders)
+  locales: [
+    'en', 'it'
+  ],
 
-  // Set base URL for hreflang canonical URLs
-  baseUrl: "https://astrosbuild.vercel.app",
-
-  // Map locales to their route overrides (optional)
-  routeOverrides: {
-    en: "", // Root is English
+  // Optional: Customize URL routes per locale
+  routes: {
+    '/about': {
+      en: '/about',
+      it: '/chi-siamo'
+      
+    },
+    '/contact': {
+      en: '/contact',
+      it: '/contatti'
+    },
+    '/pricing': {
+      en: '/pricing',
+      it: '/prezzi'
+      
+    },
+    '/blog': {
+      en: '/blog',
+      it: '/blog'
+      
+    }
   },
 
-  // i18next config
+  // Show default locale in URLs? Set false to have `/` = English
+  showDefaultLocale: false,
+
+  // Base URL for hreflang links (no trailing spaces!)
+  baseUrl: 'https://astrosbuild.vercel.app ',
+
+  // Backend config: where to load translation JSON files
+  backend: {
+    loadPath: './src/locales/{{lng}}/{{ns}}.json',
+  },
+
+  // i18next options
   i18next: {
     interpolation: {
-      escapeValue: false, // React-like escaping
-    },
-  },
-
-  // Backend plugin to load translation files
-  i18nextPlugins: {
-    backend: {
-      loadPath: "./src/locales/{{lng}}/{{ns}}.json",
+      escapeValue: false, // Safe with React/Astro components
     },
   },
 };
