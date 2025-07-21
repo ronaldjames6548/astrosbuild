@@ -8,6 +8,8 @@ import astroI18next from "astro-i18next";
 import alpinejs from "@astrojs/alpinejs";
 import AstroPWA from "@vite-pwa/astro";
 import { workbox } from '@vite-pwa/astro';
+import vercel from '@astrojs/vercel/serverless';
+
 import icon from "astro-icon";
 
 import vercel from '@astrojs/vercel/serverless';
@@ -57,12 +59,13 @@ export default defineConfig({
       },
     ],
   },
-  workbox({
-    navigateFallback: '/404',
-    globDirectory: '.vercel/output/static',
-    globPatterns: ['assets/*.js'],
-    globIgnores: ['**/node_modules/**/*', 'sw.js', 'workbox-*.js'],
-  }),
+    workbox({
+      workbox: {
+        globDirectory: '.vercel/output/static',
+        globPatterns: ['assets/*.js'],
+        globIgnores: ['**/node_modules/**/*', 'sw.js', 'workbox-*.js'],
+      },
+    }),
   devOptions: {
     enabled: false,
     navigateFallbackAllowlist: [/^\/404$/],
