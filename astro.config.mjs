@@ -7,14 +7,13 @@ import rehypeSlug from "rehype-slug";
 import astroI18next from "astro-i18next";
 import alpinejs from "@astrojs/alpinejs";
 import AstroPWA from "@vite-pwa/astro";
-import vercel from "@astrojs/vercel"; // ✅ Updated import
+import vercel from "@astrojs/vercel"; // Updated import
 import icon from "astro-icon";
-import { workbox } from "@vite-pwa/astro"; // ✅ Import workbox
 
 export default defineConfig({
-  site: "https://astros.zank.studio", // ✅ Removed extra whitespace
-  output: "server", // ✅ Replaced 'hybrid' with 'server' for Vercel
-  adapter: vercel(), // ✅ Using updated adapter
+  site: "https://astros.zank.studio ",
+  output: "server",
+  adapter: vercel(),
   vite: {
     define: {
       __DATE__: `'${new Date().toISOString()}'`,
@@ -36,46 +35,32 @@ export default defineConfig({
         short_name: "Astros",
         theme_color: "#ffffff",
         icons: [
-          {
-            src: "pwa-192x192.png",
-            sizes: "192x192",
-            type: "image/png",
-          },
-          {
-            src: "pwa-512x512.png",
-            sizes: "512x512",
-            type: "image/png",
-          },
-          {
-            src: "pwa-512x512.png",
-            sizes: "512x512",
-            type: "image/png",
-            purpose: "any maskable",
-          },
-        ],
+          { src: "pwa-192x192.png", sizes: "192x192", type: "image/png" },
+          { src: "pwa-512x512.png", sizes: "512x512", type: "image/png" },
+          { src: "pwa-512x512.png", sizes: "512x512", type: "image/png", purpose: "any maskable" }
+        ]
       },
-      ...workbox({ // ✅ Spread operator to merge config
+      workbox: {
         navigateFallback: "/404",
-        globDirectory: ".vercel/output/static",
         globPatterns: ["assets/*.js"],
-        globIgnores: ["**/node_modules/**/*", "sw.js", "workbox-*.js"],
-      }),
+        globIgnores: ["**/node_modules/**/*", "sw.js", "workbox-*.js"]
+      },
       devOptions: {
         enabled: false,
         navigateFallbackAllowlist: [/^\/404$/],
-        suppressWarnings: true,
-      },
+        suppressWarnings: true
+      }
     }),
-    icon(),
+    icon()
   ],
   markdown: {
     rehypePlugins: [
       rehypeSlug,
-      [rehypeAutolinkHeadings, autolinkConfig],
-    ],
+      [rehypeAutolinkHeadings, autolinkConfig]
+    ]
   },
   experimental: {
-    viewTransitions: true,
-    // ✅ Removed outdated flags: clientPrerender, hybridOutput, contentCollectionCache
-  },
+    viewTransitions: true
+    // Removed outdated flags: clientPrerender, hybridOutput, contentCollectionCache
+  }
 });
