@@ -70,7 +70,7 @@ export default defineConfig({
     const url = new URL(page, 'https://tiktokio.cam');
     
     // All non-English language codes
-    const nonEnglishLangs = ['ar', 'it', 'de', 'es', 'fr', 'hi', 'id', 'ko', 'ms', 'nl', 'pt', 'ru', 'tl', 'tr'];
+    const nonEnglishLangs = ['it'];
     
     // Should exclude if:
     const shouldExclude = 
