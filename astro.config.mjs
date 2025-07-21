@@ -61,6 +61,6 @@ export default defineConfig({
   },
   experimental: {
     viewTransitions: true
-    // Removed outdated flags: clientPrerender, hybridOutput, contentCollectionCache
+    
   }
 });
