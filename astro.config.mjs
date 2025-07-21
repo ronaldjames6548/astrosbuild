@@ -9,9 +9,14 @@ import alpinejs from "@astrojs/alpinejs";
 import AstroPWA from "@vite-pwa/astro";
 import icon from "astro-icon";
 
+import vercel from '@astrojs/vercel/serverless';
+import { workbox } from '@vite-pwa/astro';
+
 // https://astro.build/config
 export default defineConfig({
 	site: "https://astros.zank.studio",
+	output: 'hybrid',
+	adapter: vercel(),
 	vite: {
 		define: {
 			__DATE__: `'${new Date().toISOString()}'`,
@@ -51,10 +56,15 @@ export default defineConfig({
 					},
 				],
 			},
-			workbox: {
+			workbox({
+				workbox: {
 				navigateFallback: "/404",
-				globPatterns: ["*.js"],
-			},
+				globDirectory: '.vercel/output/static',
+				globPatterns: ['assets/*.js'],
+				globIgnores: ['**/node_modules/**/*', 'sw.js', 'workbox-*.js'],
+				},
+			}),
+			
 			devOptions: {
 				enabled: false,
 				navigateFallbackAllowlist: [/^\/404$/],
