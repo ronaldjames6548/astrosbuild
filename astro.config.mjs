@@ -71,6 +71,9 @@ export default defineConfig({
 		],
 	},
 	experimental: {
-		contentCollectionCache: true,
+		viewTransitions: true,
+		clientPrerender: true,
+		hybridOutput: true,
+		contentCollectionCache: true
 	},
 });
