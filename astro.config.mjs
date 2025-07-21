@@ -7,13 +7,10 @@ import rehypeSlug from "rehype-slug";
 import astroI18next from "astro-i18next";
 import alpinejs from "@astrojs/alpinejs";
 import AstroPWA from "@vite-pwa/astro";
-import { workbox } from '@vite-pwa/astro';
-import vercel from '@astrojs/vercel/serverless';
-
+import { workbox } from "@vite-pwa/astro";
+import vercel from "@astrojs/vercel/serverless";
 import icon from "astro-icon";
 
-import vercel from '@astrojs/vercel/serverless';
-import { workbox } from '@vite-pwa/astro';
 
 // https://astro.build/config
 export default defineConfig({
