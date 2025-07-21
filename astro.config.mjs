@@ -67,7 +67,7 @@ export default defineConfig({
     solidJs(),
 	sitemap({
   filter(page) {
-    const url = new URL(page, 'https://tiktokio.cam');
+    const url = new URL(page, 'https://astrosbuild.vercel.app');
     
     // All non-English language codes
     const nonEnglishLangs = ['it'];

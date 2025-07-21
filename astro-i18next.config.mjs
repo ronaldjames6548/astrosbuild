@@ -1,14 +1,14 @@
 /** @type {import('astro-i18next').AstroI18nextConfig} */
 export default {
   defaultLocale: "en",
-  locales: ["en", "it", "fr", "de", "es", "hi", "ar", "id", "ru", "pt", "ko", "tl", "nl", "ms", "tr"],
+  locales: ["it"],
 
   // Generate pages for default locale without language suffix in URL
   generateDefaultLanguagePage: true,
   defaultLangHasNoSuffix: true,
 
   // Set base URL for hreflang canonical URLs
-  baseUrl: "https://tiktokio.cam",
+  baseUrl: "https://astrosbuild.vercel.app",
 
   // Map locales to their route overrides (optional)
   routeOverrides: {
