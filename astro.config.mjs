@@ -28,49 +28,46 @@ export default defineConfig({
 		astroI18next(),
 		alpinejs(),
 		AstroPWA({
-			mode: "production",
-			base: "/",
-			scope: "/",
-			includeAssets: ["favicon.svg"],
-			registerType: "autoUpdate",
-			manifest: {
-				name: "Astros - Starter Template for Astro with Tailwind CSS",
-				short_name: "Astros",
-				theme_color: "#ffffff",
-				icons: [
-					{
-						src: "pwa-192x192.png",
-						sizes: "192x192",
-						type: "image/png",
-					},
-					{
-						src: "pwa-512x512.png",
-						sizes: "512x512",
-						type: "image/png",
-					},
-					{
-						src: "pwa-512x512.png",
-						sizes: "512x512",
-						type: "image/png",
-						purpose: "any maskable",
-					},
-				],
-			},
-			workbox({
-				workbox: {
-				navigateFallback: '/404',
-				globDirectory: '.vercel/output/static',
-				globPatterns: ['assets/*.js'],
-				globIgnores: ['**/node_modules/**/*', 'sw.js', 'workbox-*.js'],
-				},
-			}),
-			
-			devOptions: {
-				enabled: false,
-				navigateFallbackAllowlist: [/^\/404$/],
-				suppressWarnings: true,
-			},
-		}),
+  mode: "production",
+  base: "/",
+  scope: "/",
+  includeAssets: ["favicon.svg"],
+  registerType: "autoUpdate",
+  manifest: {
+    name: "Astros - Starter Template for Astro with Tailwind CSS",
+    short_name: "Astros",
+    theme_color: "#ffffff",
+    icons: [
+      {
+        src: "pwa-192x192.png",
+        sizes: "192x192",
+        type: "image/png",
+      },
+      {
+        src: "pwa-512x512.png",
+        sizes: "512x512",
+        type: "image/png",
+      },
+      {
+        src: "pwa-512x512.png",
+        sizes: "512x512",
+        type: "image/png",
+        purpose: "any maskable",
+      },
+    ],
+  },
+  workbox({
+    navigateFallback: '/404',
+    globDirectory: '.vercel/output/static',
+    globPatterns: ['assets/*.js'],
+    globIgnores: ['**/node_modules/**/*', 'sw.js', 'workbox-*.js'],
+  }),
+  devOptions: {
+    enabled: false,
+    navigateFallbackAllowlist: [/^\/404$/],
+    suppressWarnings: true,
+  },
+}),
 		icon(),
 	],
 	markdown: {
